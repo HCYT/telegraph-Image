@@ -121,7 +121,7 @@ export default function Home() {
 
 
     } catch (error) {
-      console.error('請求錯誤:', error);
+      console.error('请求出错:', error);
     }
   }
 
@@ -156,7 +156,7 @@ export default function Home() {
     const filesToUpload = file ? [file] : selectedFiles;
 
     if (filesToUpload.length === 0) {
-      toast.error('請選擇要上傳的文件');
+      toast.error('请选择要上传的文件');
       setUploading(false);
       return;
     }
@@ -197,44 +197,44 @@ export default function Home() {
             let errorMsg;
             try {
               const errorData = await response.json();
-              errorMsg = errorData.message || `上傳 ${file.name} 出錯`;
+              errorMsg = errorData.message || `上传 ${file.name} 图片时出错`;
             } catch (jsonError) {
               // 如果解析 JSON 失败，使用默认错误信息
-              errorMsg = `上傳 ${file.name} 發生未知錯誤`;
+              errorMsg = `上传 ${file.name} 图片时发生未知错误`;
             }
 
             // 细化状态码处理
             switch (response.status) {
               case 400:
-                toast.error(`請求無效: ${errorMsg}`);
+                toast.error(`请求无效: ${errorMsg}`);
                 break;
               case 403:
-                toast.error(`無權限: ${errorMsg}`);
+                toast.error(`无权限访问资源: ${errorMsg}`);
                 break;
               case 404:
-                toast.error(`資源未找到: ${errorMsg}`);
+                toast.error(`资源未找到: ${errorMsg}`);
                 break;
               case 500:
-                toast.error(`服務器錯誤: ${errorMsg}`);
+                toast.error(`服务器错误: ${errorMsg}`);
                 break;
               case 401:
-                toast.error(`未授權: ${errorMsg}`);
+                toast.error(`未授权: ${errorMsg}`);
                 break;
               default:
-                toast.error(`上傳 ${file.name} 圖片時出錯: ${errorMsg}`);
+                toast.error(`上传 ${file.name} 图片时出错: ${errorMsg}`);
             }
           }
         } catch (error) {
-          toast.error(`上傳 ${file.name} 圖片時出錯`);
+          toast.error(`上传 ${file.name} 图片时出错`);
         }
       }
 
       setUploadedFilesNum(uploadedFilesNum + successCount);
-      toast.success(`已成功上傳 ${successCount} 張圖片`);
+      toast.success(`已成功上传 ${successCount} 张图片`);
 
     } catch (error) {
-      console.error('上傳過程中出現錯誤:', error);
-      toast.error('上傳錯誤');
+      console.error('上传过程中出现错误:', error);
+      toast.error('上传错误');
     } finally {
       setUploading(false);
     }
@@ -304,9 +304,9 @@ export default function Home() {
     try {
       await navigator.clipboard.writeText(text);
       // alert('已成功复制到剪贴板');
-      toast.success(`連結複製成功`);
+      toast.success(`链接复制成功`);
     } catch (err) {
-      toast.error("連結複製失敗")
+      toast.error("链接复制失败")
     }
   };
 
@@ -384,7 +384,7 @@ export default function Home() {
                   {[
                     { text: data.url, onClick: () => handleCopy(data.url) },
                     { text: `![${data.name}](${data.url})`, onClick: () => handleCopy(`![${data.name}](${data.url})`) },
-                    { text: `<a href="${data.url}" target="_blank">${data.url}"></a>`, onClick: () => handleCopy(`<a href="${data.url}" target="_blank">${data.url}"></a>`) },
+                    { text: `<a href="${data.url}" target="_blank"><img src="${data.url}"></a>`, onClick: () => handleCopy(`<a href="${data.url}" target="_blank"><img src="${data.url}"></a>`) },
                     { text: `[img]${data.url}[/img]`, onClick: () => handleCopy(`[img]${data.url}[/img]`) },
                   ].map((item, i) => (
                     <input
@@ -459,7 +459,7 @@ export default function Home() {
     if (!isAuthapi) {
       return (
         <Link href="/login">
-          <LoginButton>登入</LoginButton>
+          <LoginButton>登录</LoginButton>
         </Link>
       );
     }
@@ -475,7 +475,7 @@ export default function Home() {
       default:
         return (
           <Link href="/login">
-            <LoginButton>登入</LoginButton>
+            <LoginButton>登录</LoginButton>
           </Link>
         );
     }
@@ -485,26 +485,32 @@ export default function Home() {
   return (
     <main className=" overflow-auto h-full flex w-full min-h-screen flex-col items-center justify-between">
       <header className="fixed top-0 h-[50px] left-0 w-full border-b bg-white flex z-50 justify-center items-center">
-        <nav className="flex justify-between items-center w-full max-w-4xl px-4">圖床</nav>
+        <nav className="flex justify-between items-center w-full max-w-4xl px-4">图床</nav>
         {renderButton()}
       </header>
       <div className="mt-[60px] w-9/10 sm:w-9/10 md:w-9/10 lg:w-9/10 xl:w-3/5 2xl:w-2/3">
 
         <div className="flex flex-row">
           <div className="flex flex-col">
-            <div className="text-gray-800 text-lg">圖片或影片上傳
+            <div className="text-gray-800 text-lg">图片或视频上传
             </div>
             <div className="mb-4 text-sm text-gray-500">
-              上傳文件最大 5 MB;本站已托管 <span className="text-cyan-600">{Total}</span> 張圖片; 你的 IP 是：<span className="text-cyan-600">{IP}pan>
+              上传文件最大 5 MB;本站已托管 <span className="text-cyan-600">{Total}</span> 张图片; 你访问本站的IP是：<span className="text-cyan-600">{IP}</span>
             </div>
           </div>
           <div className="flex  flex-col sm:flex-col   md:w-auto lg:flex-row xl:flex-row  2xl:flex-row  mx-auto items-center  ">
-            <span className=" text-lg sm:text-sm   md:text-sm lg:text-xl xl:text-xl  2xl:text-xl">上傳端口：</span>
+            <span className=" text-lg sm:text-sm   md:text-sm lg:text-xl xl:text-xl  2xl:text-xl">上传接口：</span>
             <select
               value={selectedOption} // 将选择框的值绑定到状态中的 selectedOption
               onChange={handleSelectChange} // 当选择框的值发生变化时触发 handleSelectChange 函数
               className="text-lg p-2 border  rounded text-center w-auto sm:w-auto md:w-auto lg:w-auto xl:w-auto  2xl:w-36">
+              <option value="tg" >TG(会失效)</option>
+              <option value="tgchannel">TG_Channel</option>
               <option value="r2">R2</option>
+              {/* <option value="vviptuangou">vviptuangou</option> */}
+              <option value="58img">58img</option>
+              {/* <option value="tencent">tencent</option> */}
+
             </select>
           </div>
 
@@ -547,20 +553,20 @@ export default function Home() {
                     className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer mx-2"
                     onClick={() => handleImageClick(index)}
                   >
-                    icon={faSearchPlus} />
+                    <FontAwesomeIcon icon={faSearchPlus} />
                   </button>
                   <button
                     className="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer mx-2"
                     onClick={() => handleRemoveImage(index)}
                   >
-                    icon={faTrashAlt} />
+                    <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                   <button
                     className="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer mx-2"
 
                     onClick={() => handleUpload(file)}
                   >
-                    icon={faUpload} />
+                    <FontAwesomeIcon icon={faUpload} />
                   </button>
                 </div>
               </div>
@@ -572,7 +578,7 @@ export default function Home() {
 
                 <div className="text-gray-500">
 
-                  拖拽文件到這里或將螢幕截圖覆制並粘貼到此處上傳
+                  拖拽文件到这里或将屏幕截图复制并粘贴到此处上传
                 </div>
               </div>
             )}
@@ -585,8 +591,8 @@ export default function Home() {
               htmlFor="file-upload"
               className="w-full h-10 bg-blue-500 cursor-pointer flex items-center justify-center text-white"
             >
-              icon={faImages} style={{ width: '20px', height: '20px' }} className="mr-2" />
-              選擇圖片
+              <FontAwesomeIcon icon={faImages} style={{ width: '20px', height: '20px' }} className="mr-2" />
+              选择图片
             </label>
             <input
               id="file-upload"
@@ -598,7 +604,7 @@ export default function Home() {
           </div>
           <div className="md:col-span-5 col-span-8">
             <div className="w-full h-10 bg-slate-200 leading-10 px-4 text-center md:text-left">
-              已選擇 {selectedFiles.length} 張，共 {getTotalSizeInMB(selectedFiles)} M
+              已选择 {selectedFiles.length} 张，共 {getTotalSizeInMB(selectedFiles)} M
             </div>
           </div>
           <div className="md:col-span-1 col-span-3">
@@ -606,7 +612,7 @@ export default function Home() {
               className="w-full bg-red-500 cursor-pointer h-10 flex items-center justify-center text-white"
               onClick={handleClear}
             >
-              icon={faTrashAlt} style={{ width: '20px', height: '20px' }} className="mr-2" />
+              <FontAwesomeIcon icon={faTrashAlt} style={{ width: '20px', height: '20px' }} className="mr-2" />
               清除
             </div>
           </div>
@@ -617,8 +623,8 @@ export default function Home() {
 
               onClick={() => handleUpload()}
             >
-              icon={faUpload} style={{ width: '20px', height: '20px' }} className="mr-2" />
-              上傳
+              <FontAwesomeIcon icon={faUpload} style={{ width: '20px', height: '20px' }} className="mr-2" />
+              上传
             </div>
           </div>
         </div>
@@ -700,7 +706,7 @@ Unsupported file type
               </div>
             ) : (
               // 你可以选择一个默认的内容或者返回 null
-              <div>未知類型</div>
+              <div>未知类型</div>
             )}
           </div>
 
