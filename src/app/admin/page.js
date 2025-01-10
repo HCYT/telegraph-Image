@@ -107,7 +107,7 @@ export default function Admin() {
           <div className="flex justify-between items-center w-full max-w-4xl px-4">
             <button className='text-white px-4 py-2  transition ease-in-out delay-150 bg-blue-500 hover:scale-110 hover:bg-indigo-500 duration-300  rounded '
               onClick={handleViewToggle}>
-              切換到 {view === 'list' ? '日志頁' : '數據頁'}
+              切換到 {view === 'list' ? '日誌頁' : '數據頁'}
             </button>
             <form onSubmit={handleSearch} className="hidden sm:flex items-center">
               <input
