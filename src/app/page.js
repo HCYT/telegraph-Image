@@ -504,13 +504,7 @@ export default function Home() {
               value={selectedOption} // 将选择框的值绑定到状态中的 selectedOption
               onChange={handleSelectChange} // 当选择框的值发生变化时触发 handleSelectChange 函数
               className="text-lg p-2 border  rounded text-center w-auto sm:w-auto md:w-auto lg:w-auto xl:w-auto  2xl:w-36">
-              <option value="tg" >TG(会失效)</option>
-              <option value="tgchannel">TG_Channel</option>
               <option value="r2">R2</option>
-              {/* <option value="vviptuangou">vviptuangou</option> */}
-              <option value="58img">58img</option>
-              {/* <option value="tencent">tencent</option> */}
-
             </select>
           </div>
 
@@ -697,12 +691,8 @@ export default function Home() {
               />
             ) : boxType === "other" ? (
               // 这里可以渲染你想要的其他内容或组件
-              
-rounded">
-
-                
-Unsupported file type
-
+              <div className="p-4 bg-white text-black rounded">
+                <p>Unsupported file type</p>
               </div>
             ) : (
               // 你可以选择一个默认的内容或者返回 null
@@ -714,11 +704,9 @@ Unsupported file type
 
       )}
 
-      
-bottom-0 h-[50px] bg-slate-200  w-full  flex  z-50 justify-center items-center ">
-
+      <div className="fixed inset-x-0 bottom-0 h-[50px] bg-slate-200  w-full  flex  z-50 justify-center items-center ">
         <Footer />
       </div>
     </main>
   );
-          }
+}
