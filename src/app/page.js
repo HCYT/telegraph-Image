@@ -485,21 +485,21 @@ export default function Home() {
   return (
     <main className=" overflow-auto h-full flex w-full min-h-screen flex-col items-center justify-between">
       <header className="fixed top-0 h-[50px] left-0 w-full border-b bg-white flex z-50 justify-center items-center">
-        <nav className="flex justify-between items-center w-full max-w-4xl px-4">圖床</nav>
+        <nav className="flex justify-between items-center w-full max-w-4xl px-4">海博賽特日誌 Hybrid Cyt Log</nav>
         {renderButton()}
       </header>
       <div className="mt-[60px] w-9/10 sm:w-9/10 md:w-9/10 lg:w-9/10 xl:w-3/5 2xl:w-2/3">
 
         <div className="flex flex-row">
           <div className="flex flex-col">
-            <div className="text-gray-800 text-lg">圖片或視頻上傳
+            <div className="text-gray-800 text-lg">圖片上傳
             </div>
             <div className="mb-4 text-sm text-gray-500">
               上傳文件最大 5 MB;本站已托管 <span className="text-cyan-600">{Total}</span> 張圖片; 你訪問本站的IP是：<span className="text-cyan-600">{IP}</span>
             </div>
           </div>
           <div className="flex  flex-col sm:flex-col   md:w-auto lg:flex-row xl:flex-row  2xl:flex-row  mx-auto items-center  ">
-            <span className=" text-lg sm:text-sm   md:text-sm lg:text-xl xl:text-xl  2xl:text-xl">上傳接口：</span>
+            <span className=" text-lg sm:text-sm   md:text-sm lg:text-xl xl:text-xl  2xl:text-xl">上傳入口：</span>
             <select
               value={selectedOption} // 將選擇框的值綁定到狀態中的 selectedOption
               onChange={handleSelectChange} // 當選擇框的值發生變化時觸發 handleSelectChange 函數
@@ -572,7 +572,7 @@ export default function Home() {
 
                 <div className="text-gray-500">
 
-                  拖拽文件到這里或將屏幕截圖覆制並粘貼到此處上傳
+                  拖曳文件到這裡或將螢幕截圖複製貼上上傳
                 </div>
               </div>
             )}
