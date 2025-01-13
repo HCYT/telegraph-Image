@@ -143,7 +143,7 @@ async function insertTgImgLog(DB, url, referer, ip, time) {
     .run();
 }
 
-// 异步日志记录
+// 异步日誌记录
 async function logRequest(env, name, referer, ip) {
   try {
     const nowTime = await get_nowTime()

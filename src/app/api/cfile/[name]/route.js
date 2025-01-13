@@ -238,7 +238,7 @@ async function get_nowTime() {
 }
 
 
-// 异步日志记录
+// 异步日誌记录
 async function logRequest(env, name, referer, ip) {
   try {
     const nowTime = await get_nowTime()
